@@ -47,6 +47,7 @@ module Adder(
         if (sum & 8'b100000000) begin
             out = sum;
         else begin
+        //test
       //find the leftmost 1 and shift
             sum << 1;
         end
