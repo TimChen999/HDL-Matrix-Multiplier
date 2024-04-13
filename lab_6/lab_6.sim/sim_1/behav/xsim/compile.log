@@ -1,0 +1,26 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/MACUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MACUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Matrix
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:79]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:80]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:81]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:82]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:83]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:84]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:89]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:90]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:91]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:92]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:93]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:94]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:99]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:100]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:101]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:102]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b1 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:103]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register b2 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:104]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register a0 is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/angel/OneDrive/Documents/College/ECE 460M/lab_6/Matrix.v:109]
+INFO: [#UNDEF] Sorry, too many errors..

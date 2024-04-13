@@ -1,4 +1,3 @@
-`timescale 1ns / 1ps
 
 //Multiply 2 numbers 
 //1 bit for the sign, 3 bits for the biased exponent (which are biased by 3) and 4 bits for the mantissa (fraction) parts with a leading 1.
