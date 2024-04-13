@@ -22,9 +22,9 @@
 //Multiply 2 numbers 
 //1 bit for the sign, 3 bits for the biased exponent (which are biased by 3) and 4 bits for the mantissa (fraction) parts with a leading 1.
 module Multiplier(
-    input wire [8:0] in1,
-    input wire [8:0] in2,
-    output reg [8:0] out
+    input wire [7:0] in1,
+    input wire [7:0] in2,
+    output reg [7:0] out
     );
     
     //Store variables

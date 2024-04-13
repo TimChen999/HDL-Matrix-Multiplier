@@ -43,23 +43,24 @@ module Matrix(
                 //make sure the above wires/ports are identicaly
 
                 //You can choose not to have below wires/ports in your design
-                output reg [7:0] M1_out, 
-                output reg [7:0] M2_out, 
-                output reg [7:0] M3_out, 
-                output reg [7:0] M4_out, 
-                output reg [7:0] M5_out, 
-                output reg [7:0] M6_out, 
-                output reg [7:0] M7_out, 
-                output reg [7:0] M8_out, 
-                output reg [7:0] M9_out, 
+                output wire [7:0] M1_out, 
+                output wire [7:0] M2_out, 
+                output wire [7:0] M3_out, 
+                output wire [7:0] M4_out, 
+                output wire [7:0] M5_out, 
+                output wire [7:0] M6_out, 
+                output wire [7:0] M7_out, 
+                output wire [7:0] M8_out, 
+                output wire [7:0] M9_out, 
                 output reg done
     );
    reg[7:0]
+   //Inputs
+   a0, a1, a2, b0, b1, b2;
+   
+   wire[7:0]
    //Placeholder 
    p0, p1, p2, p3, p4, p5, 
-   
-   //Inputs
-   a0, a1, a2, b0, b1, b2,
    
    //Connects 1st row
    c00_01, c01_02, //Right
@@ -146,6 +147,7 @@ module Matrix(
     end
     //Final state
     5: begin
+        done = 1;
     end
    endcase
    end

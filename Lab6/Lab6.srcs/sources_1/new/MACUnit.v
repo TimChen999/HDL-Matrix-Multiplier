@@ -29,8 +29,8 @@ module MACUnit(
     
     initial begin C = 0; pass_A = 0; pass_B = 0; end
     
-    reg [7:0] AxB;
-    reg [7:0] C_next;
+    wire [7:0] AxB;
+    wire [7:0] C_next;
     Multiplier m1(.in1(A), .in2(B), .out(AxB));
     Adder a1(.A(C), .B(AxB), .out(C_next));
     
