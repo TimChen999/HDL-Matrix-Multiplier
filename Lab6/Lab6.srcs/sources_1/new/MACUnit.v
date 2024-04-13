@@ -22,17 +22,22 @@
 
 module MACUnit(
     input wire clk,
-    input wire [8:0] A,
-    input wire [8:0] B,
-    input wire [8:0] C,
-    output reg [8:0] out
+    input wire [7:0] A, B,
+    output reg [7:0] pass_A, pass_B,
+    output reg [7:0] C //Final output
     );
-    wire [8:0] BxC;
     
-    Multiplier m1(.in1(A), .in2(C), .out(BxC));
+    initial begin C = 0; pass_A = 0; pass_B = 0; end
     
-    always @(posedge clk) begin  
-        //Check for special cases (zero, infinity, NaN)
+    reg [7:0] AxB;
+    reg [7:0] C_next;
+    Multiplier m1(.in1(A), .in2(B), .out(AxB));
+    Adder a1(.A(C), .B(AxB), .out(C_next));
+    
+    always @(posedge clk) begin
+        C = C_next;
+        pass_A = A;
+        pass_B = B;
     end
     
 endmodule
