@@ -24,13 +24,42 @@
 module Multiplier(
     input wire [7:0] in1,
     input wire [7:0] in2,
-    output reg [7:0] out
+    output wire [7:0] out
     );
     
+    //Sign bit
+    assign out[7] = in1[7] ^ in2[7];
+    
+    //Fraction bits
+    wire[4:0] frac1;
+    wire[4:0] frac2;
+    assign frac1 = {1'b1, in1[3:0]};
+    assign frac2 = {1'b1, in2[3:0]};
+    
+    //Multiply fraction
+    wire[9:0] fracOut; //10 bits total, MST is overflow bit, bit 8 should be leading 1 if no overflow, 7:0 are fraction
+    assign fracOut = frac1 * frac2;
+    
+    //Assgin overflow
+    wire overflow;
+    assign overflow = fracOut[9]; //Fraction must have gone over alloted bits if above 5
+    
+    //If overflow, divide fraction by half and increase exponent by 1
+    wire [9:0] fracOverflow;
+    assign fracOverflow = (overflow) ? fracOut >> 1 : fracOut; //overflow condition
+    assign out[3:0] = fracOverflow[7:4]; //Truncate fraction bits and add to output
+    
+    //Calculate exponent, if overflow, add an additional 1 
+    wire [3:0] exponent;
+    assign exponent = in1[6:4] - in2[6:4] - 3 + overflow;
+    assign out[6:4] = exponent;
+    
+    /*
     //Store variables
     reg [4:0] exponent;
     reg [9:0] fraction;
     reg fractionOverflow;
+    
     initial begin exponent = 0; fraction = 0; fractionOverflow = 0; end
     
     always @(*) begin
@@ -64,4 +93,5 @@ module Multiplier(
             out[6:4] = exponent;
         
     end
+    */
 endmodule
