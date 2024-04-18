@@ -77,8 +77,8 @@ module Adder(
     
     //assign the exponent +1 ifc[9] is -0 fc[8] sets exp to exp  - 1then f[7] exp -1....
     assign cexp =  (A[6:0] == 0 && B[6:0] == 0) ? 3'b000 : 
-    sum[10] == 1 ? exp : 
-    sum[9] == 1 ? exp - 1 : 
+    sum[10] == 1 ? exp: 
+    sum[9] == 1 ? exp - 1: 
     sum[8] == 1 ? exp - 2 : 
     sum[7] == 1 ? exp - 3 :
     sum[6] == 1 ? exp - 4 : 
