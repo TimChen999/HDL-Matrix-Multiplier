@@ -26,9 +26,11 @@ module Multiplier(
     input wire [7:0] in2,
     output wire [7:0] out
     );
+    //Store output value
+    wire[7:0] outVal;
     
-    //Sign bit
-    assign out[7] = in1[7] ^ in2[7];
+    //Sign bit (XOR condition)
+    assign outVal[7] = in1[7] ^ in2[7];
     
     //Fraction bits
     wire[4:0] frac1;
@@ -47,13 +49,19 @@ module Multiplier(
     //If overflow, divide fraction by half and increase exponent by 1
     wire [9:0] fracOverflow;
     assign fracOverflow = (overflow) ? fracOut >> 1 : fracOut; //overflow condition
-    assign out[3:0] = fracOverflow[7:4]; //Truncate fraction bits and add to output
+    assign outVal[3:0] = fracOverflow[7:4]; //Truncate fraction bits and add to output
     
     //Calculate exponent, if overflow, add an additional 1 
-    wire [3:0] exponent;
-    assign exponent = in1[6:4] - in2[6:4] - 3 + overflow;
-    assign out[6:4] = exponent;
+    wire [3:0] exponent, ex1, ex2;
+    assign ex1 = in1[6:4]; //1st number exponent
+    assign ex2 = in2[6:4]; //2nd number exponent
+    assign exponent = ex1 + ex2 - 3 + overflow;
+    assign outVal[6:4] = exponent;
     
+    //Final output (with zero checking)
+    assign out = ((in1 == 0) || (in2 == 0)) ? 8'b00000000: outVal;
+    
+endmodule
     /*
     //Store variables
     reg [4:0] exponent;
@@ -93,5 +101,6 @@ module Multiplier(
             out[6:4] = exponent;
         
     end
-    */
+    
 endmodule
+*/

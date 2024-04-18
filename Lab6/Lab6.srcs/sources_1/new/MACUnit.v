@@ -22,8 +22,11 @@
 
 module MACUnit(
     input wire clk,
-    input wire [7:0] A, B,
-    output reg [7:0] pass_A, pass_B,
+    input  start,
+    input wire [7:0] A, 
+    input wire [7:0] B,
+    output reg [7:0] pass_A, 
+    output reg [7:0] pass_B,
     output reg [7:0] C //Final output
     );
     
@@ -34,10 +37,11 @@ module MACUnit(
     Multiplier m1(.in1(A), .in2(B), .out(AxB));
     Adder a1(.A(C), .B(AxB), .out(C_next));
     
-    always @(posedge clk) begin
-        C = C_next;
-        pass_A = A;
-        pass_B = B;
+    always @(negedge clk) begin
+        if(start)
+            C = C_next;
+            pass_A <= A;
+            pass_B <= B;
     end
     
 endmodule
