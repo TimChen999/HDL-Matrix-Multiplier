@@ -23,21 +23,20 @@
 `timescale 1ns / 1ps
 
 module Adder(
-    input wire [7:0] A,
+input wire [7:0] A,
     input wire [7:0] B,
     output wire [7:0] out
     );
     
     wire csign;
     wire [7:0] big;
-    wire [10:0] big_num;
+    wire [9:0] big_num;
 
-    reg shiftNum;
     wire [7:0] smol;
     wire [9:0] smol_num;
     wire [9:0] smol_num_shifted;
-    wire expDiff;
-    wire exp;
+    wire [2:0] expDiff;
+    wire [2:0] exp;
     wire [10:0] sum;
     
     wire [3:0] cfrac;
@@ -59,7 +58,7 @@ module Adder(
     assign smol_num_shifted = smol_num >> expDiff; //shift by the difference
 
     //conisder tcaes when same sign vs opposite sign
-    assign sum = (big[7] != smol[7]) ? big_num + smol_num_shifted : big_num - smol_num_shifted;
+    assign sum = (big[7] == smol[7]) ? big_num + smol_num_shifted : big_num - smol_num_shifted;
     assign exp = big[6:4];
     
     //assign the fraction bits with large if states
@@ -70,18 +69,18 @@ module Adder(
     sum[8] == 1 ? sum[7:4] : 
     sum[7] == 1 ? sum[6:3] :
     sum[6] == 1 ? sum[5:2] : 
-    sum[5] == 1 ? sum[4:1]: 
+    sum[5] == 1 ? sum[4:1] : 
     sum[3:0];
     
     //assign the exponent +1 ifc[9] is -0 fc[8] sets exp to exp  - 1then f[7] exp -1....
     assign cexp =  (A[6:0] == 0 && B[6:0] == 0) ? 3'b000 : 
-    sum[10] == 1 ? exp: 
-    sum[9] == 1 ? exp - 1: 
-    sum[8] == 1 ? exp - 2 : 
-    sum[7] == 1 ? exp - 3 :
-    sum[6] == 1 ? exp - 4 : 
-    sum[5] == 1 ? exp - 5 : 
-    exp - 6;
+    sum[10] == 1 ? exp + 1 : //Overflow, add to exponent
+    sum[9] == 1 ? exp : 
+    sum[8] == 1 ? exp - 1 :
+    sum[7] == 1 ? exp - 2 :
+    sum[6] == 1 ? exp - 3 : 
+    sum[5] == 1 ? exp - 4 : 
+    exp - 5;
     
     assign out =  {csign, cexp, cfrac}; //bit width: 1_3_4 = 8 bits in total
    
