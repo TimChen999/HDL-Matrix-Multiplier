@@ -51,9 +51,9 @@ input wire [7:0] A,
     assign smol = A[6:0] < B[6:0] ? A : B;
     assign csign = big[7];
     
-    //fraction part
-    assign big_num = {1'b1, big[3:0],5'b00000};
-    assign smol_num = {1'b1, smol[3:0],5'b00000};
+    //fraction part (account for denormalization)
+    assign big_num = (big[6:4] == 3'b000) ? {1'b0, big[3:0], 5'b00000} : {1'b1, big[3:0], 5'b00000};
+    assign smol_num = (smol[6:4] == 3'b000) ? {1'b0, smol[3:0], 5'b00000} : {1'b1, smol[3:0], 5'b00000};
     assign expDiff = big[6:4] - smol[6:4]; //exponennt diff
     assign smol_num_shifted = smol_num >> expDiff; //shift by the difference
 
@@ -63,24 +63,24 @@ input wire [7:0] A,
     
     //assign the fraction bits with large if states
     //consider when both fractions are the 00000 and the exponents are the same = answer should be 00000
-    assign cfrac = (A[6:0] == 0 && B[6:0] == 0) ? 4'b0000 :  
-    sum[10] == 1 ? sum[9:6] : 
-    sum[9] == 1 ? sum[8:5] : 
-    sum[8] == 1 ? sum[7:4] : 
-    sum[7] == 1 ? sum[6:3] :
-    sum[6] == 1 ? sum[5:2] : 
-    sum[5] == 1 ? sum[4:1] : 
-    sum[3:0];
+    assign cfrac = (A[6:0] == 0 && B[6:0] == 0) ? 4'b0000 :
+               sum[10] ? sum[9:6] :
+               sum[9]  ? sum[8:5] :
+               sum[8]  ? sum[7:4] :
+               sum[7]  ? sum[6:3] :
+               sum[6]  ? sum[5:2] :
+               sum[5]  ? sum[4:1] :
+                         sum[3:0];
     
     //assign the exponent +1 ifc[9] is -0 fc[8] sets exp to exp  - 1then f[7] exp -1....
-    assign cexp =  (A[6:0] == 0 && B[6:0] == 0) ? 3'b000 : 
-    sum[10] == 1 ? exp + 1 : //Overflow, add to exponent
-    sum[9] == 1 ? exp : 
-    sum[8] == 1 ? exp - 1 :
-    sum[7] == 1 ? exp - 2 :
-    sum[6] == 1 ? exp - 3 : 
-    sum[5] == 1 ? exp - 4 : 
-    exp - 5;
+    assign cexp = (A[6:0] == 0 && B[6:0] == 0) ? 3'b000 :
+              sum[10] ? exp + 1 : //Overflow, add to exponent
+              sum[9]  ? exp :
+              sum[8]  ? exp - 1 :
+              sum[7]  ? exp - 2 :
+              sum[6]  ? exp - 3 :
+              sum[5]  ? exp - 4 :
+                        exp - 5;
     
     assign out =  {csign, cexp, cfrac}; //bit width: 1_3_4 = 8 bits in total
    
