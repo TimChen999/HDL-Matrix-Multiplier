@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="209.476 ns"></ZoomEndTime>
+      <ZoomEndTime time="277.005 ns"></ZoomEndTime>
       <Cursor1Time time="0.004 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="167"></NameColumnWidth>
-      <ValueColumnWidth column_width="64"></ValueColumnWidth>
+      <ValueColumnWidth column_width="60"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="51" />
    <wvobject fp_name="/Systolic_Matrix_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -185,6 +185,42 @@
       <obj_property name="ObjectShortName">AxB[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Systolic_Matrix_tb/DUT/m00/C_next" type="array">
+      <obj_property name="ElementShortName">C_next[7:0]</obj_property>
+      <obj_property name="ObjectShortName">C_next[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/A" type="array">
+      <obj_property name="ElementShortName">A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/B" type="array">
+      <obj_property name="ElementShortName">B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/pass_A" type="array">
+      <obj_property name="ElementShortName">pass_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pass_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/pass_B" type="array">
+      <obj_property name="ElementShortName">pass_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pass_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/C" type="array">
+      <obj_property name="ElementShortName">C[7:0]</obj_property>
+      <obj_property name="ObjectShortName">C[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/AxB" type="array">
+      <obj_property name="ElementShortName">AxB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">AxB[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Systolic_Matrix_tb/DUT/m01/C_next" type="array">
       <obj_property name="ElementShortName">C_next[7:0]</obj_property>
       <obj_property name="ObjectShortName">C_next[7:0]</obj_property>
    </wvobject>

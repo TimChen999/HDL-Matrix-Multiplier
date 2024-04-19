@@ -22,7 +22,6 @@
 //Add 2 8 bit floating point numbers (
 `timescale 1ns / 1ps
 
-
 module Adder(
     input wire [7:0] A,
     input wire [7:0] B,
@@ -47,10 +46,8 @@ module Adder(
     //extra 
     integer i;
     reg leftmost_bit_pos;//check
-    //
 
-    initial begin
-    end
+    //Assign big and small numbers
     assign big = A[6:0] >= B[6:0] ? A : B; 
     assign smol = A[6:0] < B[6:0] ? A : B;
     assign csign = big[7];
@@ -60,6 +57,7 @@ module Adder(
     assign smol_num = {1'b1, smol[3:0],5'b00000};
     assign expDiff = big[6:4] - smol[6:4]; //exponennt diff
     assign smol_num_shifted = smol_num >> expDiff; //shift by the difference
+
     //conisder tcaes when same sign vs opposite sign
     assign sum = (big[7] != smol[7]) ? big_num + smol_num_shifted : big_num - smol_num_shifted;
     assign exp = big[6:4];
